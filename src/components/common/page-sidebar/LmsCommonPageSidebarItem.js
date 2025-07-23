@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from "react";
-import { GoChevronDown } from "react-icons/go";
+
 import {useParams, usePathname, useRouter} from "next/navigation";
 import {usePageSidebarContext} from "@/store/PageSidebarContext";
 import LmsCommonPageSidebarItem from "@/components/common/page-sidebar/LmsCommonPageSidebarItem";

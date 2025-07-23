@@ -1,8 +1,5 @@
 import React from 'react';
-import * as Headless from "@headlessui/react";
-import {Input} from "@/components/common/input";
-import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
-import {ErrorMessage} from "@/components/common/fieldset";
+
 
 const FilterFormWrapper = ({label, singleElement = false, required,  className, children, isHalfWidth = false }) => {
     return (

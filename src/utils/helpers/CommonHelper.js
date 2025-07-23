@@ -1,4 +1,4 @@
-export function ageSidebarData (){
+export function getSidebarData (){
   return [
     {
       "id": 2,
@@ -318,3 +318,7 @@ export function ageSidebarData (){
     }
   ];
 }
+
+export const formatErrors = (errors = []) => errors.reduce((acc, curr) => {
+  return { ...acc, ...curr };
+}, {});

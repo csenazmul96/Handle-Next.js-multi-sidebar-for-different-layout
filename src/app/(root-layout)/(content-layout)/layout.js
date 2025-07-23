@@ -1,7 +1,7 @@
 import React from "react";
-import MainContentWrapper from "@/components/layoutwapper/MainContentWrapper";
-import {getChapterGroups} from "@/utils/api/videoContentRequest";
+
 import ChapterSidebar from "@/app/(root-layout)/(content-layout)/components/ChapterSidebar";
+import {getSidebarData} from "@/utils/helpers/CommonHelper";
  
 
 export default async function layout({children}) {

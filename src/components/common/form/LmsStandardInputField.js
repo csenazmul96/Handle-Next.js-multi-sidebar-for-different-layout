@@ -3,7 +3,7 @@ import { ErrorMessage } from "@/components/common/fieldset";
 import { Input } from "@/components/common/input";
 import * as Headless from "@headlessui/react";
 import { useState } from "react";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import {Eye} from "lucide-react";
 
 const LmsStandardInputField = ({
                                  required = false,
@@ -82,7 +82,7 @@ const LmsStandardInputField = ({
                     } right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-medium`}
                     onClick={showPasswordHandler}
                 >
-              {!showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+              {!showPassword ? <Eye /> : <Eye />}
             </span>
             )}
 

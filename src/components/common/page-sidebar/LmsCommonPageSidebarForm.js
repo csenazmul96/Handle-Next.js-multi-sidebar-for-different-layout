@@ -11,13 +11,9 @@ import LmsStandardInputField from "@/components/common/form/LmsStandardInputFiel
 import { useEffect, useState } from "react";
 
 import { usePageSidebarContext } from "@/store/PageSidebarContext";
-import {
-  createEditParentGroup,
-  createEditSubGroup,
-  createEditSubSubGroup,
-} from "@/utils/api/lmsPageCommonSidebar";
-import { formatErrors } from "@/utils/helpers/ErrorHeloper";
+
 import { toast } from "react-toastify";
+import {formatErrors} from "@/utils/helpers/CommonHelper";
 
 const LmsCommonPageSidebarForm = ({ apiPrefix, apiPostFix, tag = "" }) => {
   const {
@@ -67,51 +63,23 @@ const LmsCommonPageSidebarForm = ({ apiPrefix, apiPostFix, tag = "" }) => {
       }
 
       if (!currentGroup) {
-        response = await createEditParentGroup(
-          newForm,
-          `${apiPrefix}/${apiPostFix}`,
-          tag
-        );
+
       } else {
         if (currentGroup.level === 1) {
           if (actionType === "edit") {
-            response = await createEditParentGroup(
-              newForm,
-              `${apiPrefix}/${apiPostFix}`,
-              tag
-            );
+
           } else {
-            response = await createEditSubGroup(
-              newForm,
-              currentGroup.id,
-              `${apiPrefix}/sub/${apiPostFix}`,
-              tag
-            );
+
           }
         } else if (currentGroup.level === 2) {
           if (actionType === "edit") {
-            response = await createEditSubGroup(
-              newForm,
-              activeDropdown.first.id,
-              `${apiPrefix}/sub/${apiPostFix}`,
-              tag
-            );
+
           } else {
-            response = await createEditSubSubGroup(
-              newForm,
-              currentGroup.id,
-              `${apiPrefix}/sub-sub/${apiPostFix}`,
-              tag
-            );
+
           }
         } else if (currentGroup.level === 3) {
           if (actionType === "edit") {
-            response = await createEditSubSubGroup(
-              newForm,
-              activeDropdown.second.id,
-              `${apiPrefix}/sub-sub/${apiPostFix}`,
-              tag
-            );
+
           }
         }
       }

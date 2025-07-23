@@ -1,7 +1,7 @@
 import {ErrorMessage, Field} from "@/components/common/fieldset";
 import {Input} from "@/components/common/input";
 import React, {useState} from "react";
-import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
+
 import * as Headless from '@headlessui/react'
 import {IoSearchOutline} from "react-icons/io5";
 import {Search} from "lucide-react";

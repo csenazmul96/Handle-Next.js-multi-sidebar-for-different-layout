@@ -2,10 +2,9 @@
 
 import React, {useState, useRef, useEffect} from "react";
 
-import {GoChevronDown, GoChevronUp} from "react-icons/go";
-import {Radio, RadioField} from "@/components/common/radio";
-import * as Headless from "@headlessui/react";
+
 import {Checkbox} from "@/components/common/checkbox";
+import {ChevronDown, ChevronUp} from "lucide-react";
 
 const LmsOrganizationGroupList = ({ menu, index, setActiveMenu, activeMenu, level, parentSlug = "" , stage,  selectedId, setSelectedGroup}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +74,7 @@ const LmsOrganizationGroupList = ({ menu, index, setActiveMenu, activeMenu, leve
                           onClick={() => toggleDropdown(menu.id)}>{menu.name}</span>
                         {menu.subOrganizationGroupList && (
                             <span className={`transition-transform duration-200`} onClick={() => toggleDropdown(menu.id)}>
-                            {isOpen ? <GoChevronUp /> : <GoChevronDown/>}
+                            {isOpen ? <ChevronUp /> : <ChevronDown />}
                         </span>
                         )}
                     </div>

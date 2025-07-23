@@ -4,7 +4,6 @@ import React from "react";
 import {confirmAlert} from "react-confirm-alert";
 import {toast} from "react-toastify";
 import ConfirmPopup from "@/components/common/confirmAlert/ConfirmPopup";
-import {deleteParentGroup, deleteSubGroup, deleteSubSubGroup} from "@/utils/api/lmsPageCommonSidebar";
 import {usePageSidebarContext} from "@/store/PageSidebarContext";
 import {Pencil, Plus, Trash2} from "lucide-react";
 
@@ -43,11 +42,8 @@ const LmsCommonPageSidebarActions = ({apiPrefix, apiPostFix, tag,
                         let response = null;
 
                         if (currentGroup.level === 1) {
-                            response = await deleteParentGroup(currentGroup.id, `${apiPrefix}/${apiPostFix}`, tag)
                         } else if (currentGroup.level === 2) {
-                            response = await deleteSubGroup(currentGroup.id, `${apiPrefix}/sub/${apiPostFix}`, tag)
                         } else if (currentGroup.level === 3) {
-                            response = await deleteSubSubGroup(currentGroup.id, `${apiPrefix}/sub-sub/${apiPostFix}`, tag)
                         }
 
                         if (response && response.status === 'success') {

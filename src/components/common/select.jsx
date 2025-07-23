@@ -1,7 +1,8 @@
 import * as Headless from '@headlessui/react'
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import {GoChevronDown} from "react-icons/go";
+
+import {ChevronDown} from "lucide-react";
 
 export const Select = forwardRef(function Select({ className, multiple, ...props }, ref) {
   return (
@@ -58,7 +59,7 @@ export const Select = forwardRef(function Select({ className, multiple, ...props
       />
       {!multiple && (
         <span className={`pointer-events-none absolute inset-y-0 right-0 flex items-center ${props.size === 'small' ? 'pr-2' : 'pr-3'}`}>
-          <GoChevronDown className={`${props.size === 'small' ? 'text-[16px]' : 'text-[24px]' }`}/>
+          <ChevronDown className={`${props.size === 'small' ? 'text-[16px]' : 'text-[24px]' }`}/>
         </span>
       )}
     </span>
