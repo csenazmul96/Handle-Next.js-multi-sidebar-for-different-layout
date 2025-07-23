@@ -27,40 +27,29 @@ export const authOptions = {
             async authorize(credentials) {
                 try {
                     const res = await fetch(
-                        `${process.env.NEXT_PUBLIC_API_URL}/lms-registration-membership/api/v1/public/admin/login`,
+                        `${process.env.NEXT_PUBLIC_API_URL}/login`,
                         {
                             method: "POST",
                             body: JSON.stringify({
-                                username: credentials.username,
+                                email: credentials.username,
                                 password: credentials.password,
                                 redirect: false,
                                 callbackUrl: "/",
                             }),
                             headers: {
                                 "Content-Type": "application/json",
-                                Accept: "application/json",
-                                "x-forwarded-for": credentials.ip,
-                                "user-agent": `${credentials.device} - ${credentials.browser}`,
+                                Accept: "application/json"
                             },
                         }
                     );
 
-                    const data = await res.json();
+                    const user = await res.json();
 
-                    if (res.ok) {
-                        const decodedToken = jwtDecode(data.data.access_token);
-                        return {
-                            scope: decodedToken.scope,
-                            name: decodedToken.given_name,
-                            email: decodedToken.email,
-                            token: data.data.access_token,
-                            refresh_token: data.data.refresh_token,
-                            username: credentials.username,
-                        };
-                    } else {
-                        const errorMessage = data.errors;
-                        throw new Error(JSON.stringify(errorMessage));
+                    if (res.ok && user) {
+                        return user['data'];
                     }
+
+                    return null
                 } catch (error) {
                     throw new Error(error?.message ?? "Oops, something went wrong!");
                 }
@@ -71,27 +60,22 @@ export const authOptions = {
         strategy: "jwt",
     },
     callbacks: {
-        async jwt({ token, user, trigger, session }) {
+        async jwt({token, user, account, profile, trigger, session}) {
             if (user) {
-                token.scope = user.scope;
-                token.token = user.token;
-                token.refresh_token = user.refresh_token;
-                token.username = user.username;
+                token.token = user.access_token;
             }
 
-            return token;
-        },
-        async session({ session, token }) {
-            const decodedToken = jwtDecode(token.token);
+            if (trigger === "update" && session?.name) {
+                token.name = session.name;
+            }
 
-            session.permissions = decodedToken?.realm_access?.roles || [];
-            session.scope = token.scope;
+            return token
+        },
+        async session({session, token}) {
             session.token = token.token;
-            session.refresh_token = token.refresh_token;
-            session.username = token.username;
 
             return session;
-        },
+        }
     },
     events: {
         async signOut(message) {

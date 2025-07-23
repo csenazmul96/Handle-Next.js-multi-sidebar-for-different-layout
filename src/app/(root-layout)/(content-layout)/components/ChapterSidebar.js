@@ -31,7 +31,7 @@ const Sidebar = ({groups}) => {
 
     return (
         <>
-            { (mainPath === '/content-management/video-management' || mainPath === '/content-management/document-management') &&
+            { (mainPath === '/products') &&
             <LmsCommonPageSidebar groups={groups} module={`content-group`}
                                   labels={{heading: "챕터분류"}}
                                   editBtnText={'수정'}

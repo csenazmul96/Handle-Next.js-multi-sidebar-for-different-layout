@@ -12,10 +12,7 @@ const MainContentWrapper = ({children, classes = ''}) => {
 
 
     const showSidebarPaths = [
-        '/curriculum/evaluations',
-        '/content-management/video-management',
-        '/content-management/document-management',
-        '/curriculum/course',
+        '/products'
     ]
 
     let paddingLeft;

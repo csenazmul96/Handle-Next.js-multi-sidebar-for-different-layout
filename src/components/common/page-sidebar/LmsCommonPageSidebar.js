@@ -8,7 +8,7 @@ import LmsCommonPageSidebarItem from "@/components/common/page-sidebar/LmsCommon
 import { useSidebar } from "@/custom-hooks/useSidebar";
 import { usePageSidebarContext } from "@/store/PageSidebarContext";
 import { useParams, usePathname } from "next/navigation";
-import  {Folder} from "lucide-react";
+import {ChevronRight, Folder, ChevronLeft} from "lucide-react";
 import Link from 'next/link';
 const LmsCommonPageSidebar = ({
                                   groups,
@@ -65,7 +65,7 @@ const LmsCommonPageSidebar = ({
     useEffect(() => {
         setChapterGroup(groups);
     }, [groups]);
-
+console.log('pathName')
     let mainPathname = pathName.split('?')[0];
     const mainPath = mainPathname.replace(/(\/\d+)+$/, '');
     const extractPath = pathName.split("/")
@@ -84,9 +84,9 @@ const LmsCommonPageSidebar = ({
                     className=" cursor-pointer flex  text-[13px] text-textSubColor leading-[18.2px] sidebar-collapse absolute top-5 right-[-32px] border-l-0 rounded-[8px]"
                 >
                     {isSidebarOpen ? (
-                        <img src="/images/content-management/collap close btn.png" alt="" />
+                        <ChevronLeft />
                     ) : (
-                        <img src="/images/content-management/collapsible.png" alt="" />
+                        <ChevronRight />
                     )}
                 </div>
             }
