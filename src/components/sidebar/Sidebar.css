@@ -1,0 +1,16 @@
+
+
+.menu-item {
+    /*margin-bottom: 10px;*/
+}
+
+.menu-title {
+    cursor: pointer;
+}
+
+.submenu {
+    overflow: hidden;
+    transition: height 0.5s ease;
+}
+
+
